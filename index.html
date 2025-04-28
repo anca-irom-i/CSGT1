@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Google Emails Dashboard</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <button id="getEmailsBtn">Get Google Emails</button>
+  <table id="emailsTable">
+    <thead>
+      <tr>
+        <th>Sender</th>
+        <th>Subject</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Email rows appear here -->
+    </tbody>
+  </table>
+
+  <script>
+    document.getElementById('getEmailsBtn').addEventListener('click', function() {
+      // Replace the URL below with your Copilot agent's new HTTP endpoint.
+      fetch('https://your-agent-endpoint.example.com/trigger-gmail', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+          // Include any required authentication headers here.
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.getElementById('emailsTable').querySelector('tbody');
+        tableBody.innerHTML = ''; // Clear any existing data
+
+        if (data.emails && data.emails.length > 0) {
+          data.emails.forEach(email => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${email.sender}</td>
+              <td>${email.subject}</td>
+              <td>${email.date}</td>
+            `;
+            tableBody.appendChild(row);
+          });
+        } else {
+          tableBody.innerHTML = '<tr><td colspan="3">No unread emails found.</td></tr>';
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching emails:', error);
+      });
+    });
+  </script>
+</body>
+</html>
