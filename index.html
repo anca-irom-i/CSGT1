@@ -50,7 +50,7 @@
           data.emails.forEach(email => {
             const row = document.createElement('tr');
             row.innerHTML = `
-              <td>${email.sender}</td>
+              <td>${email.from}</td>
               <td>${email.subject}</td>
               <td>${email.date}</td>
             `;
