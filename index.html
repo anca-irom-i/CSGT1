@@ -17,7 +17,7 @@
   </style>
 </head>
 <body>
-  <button id="getEmailsBtn">Get Google Emails haa</button>
+  <button id="getEmailsBtn">Get Google Emails hi</button>
   <table id="emailsTable">
     <thead>
       <tr>
@@ -54,8 +54,8 @@
         const tableBody = document.getElementById('emailsTable').querySelector('tbody');
         tableBody.innerHTML = ''; // Clear any existing data
 
-        if (data.emails && data.emails.length > 0) {
-          data.emails.forEach(email => {
+        if (data.length > 0) {
+          data.forEach(email => {
             const row = document.createElement('tr');
             row.innerHTML = `
               <td>${email.from}</td>
