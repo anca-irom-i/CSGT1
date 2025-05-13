@@ -17,7 +17,7 @@
   </style>
 </head>
 <body>
-  <button id="getEmailsBtn">Get Google Emails hi</button>
+  <button id="getEmailsBtn">Get Google Emails ha</button>
   <table id="emailsTable">
     <thead>
       <tr>
@@ -58,9 +58,9 @@
           data.forEach(email => {
             const row = document.createElement('tr');
             row.innerHTML = `
-              <td>${email.from}</td>
-              <td>${email.subject}</td>
-              <td>${email.date}</td>
+              <td>${email.From}</td>
+              <td>${email.Subject}</td>
+              <td>${email.Date}</td>
             `;
             tableBody.appendChild(row);
           });
