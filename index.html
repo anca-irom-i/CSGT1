@@ -17,7 +17,7 @@
   </style>
 </head>
 <body>
-  <button id="getEmailsBtn">Get Google Emails hi</button>
+  <button id="getEmailsBtn">Get Google Emails haa</button>
   <table id="emailsTable">
     <thead>
       <tr>
@@ -34,12 +34,15 @@
   <script>
     document.getElementById('getEmailsBtn').addEventListener('click', function() {
       // Replace the URL below with your Copilot agent's new HTTP endpoint.
-      fetch('https://6821bf75259dad2655b07a7c.mockapi.io/emails', { 
-        method: 'GET',
+      fetch('https://prod-04.northeurope.logic.azure.com:443/workflows/ed72091b1f3d44e88d5ae464575eeba4/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=s9KrVnVNbBHF87P9H8v21huy3aK1hKsRUR3C_xXL1u0', { 
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
           // Include any required authentication headers here.
-        }
+        },
+        body: JSON.stringify({
+            requestType: "getEmailSummaries"  // Adjust based on your Copilot request schema
+        })
       })
       .then(response => {
     if (!response.ok) {
