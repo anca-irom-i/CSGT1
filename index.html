@@ -21,6 +21,7 @@
   <table id="emailsTable">
     <thead>
       <tr>
+        <th>1</th>
         <th>Sender</th>
         <th>Subject</th>
         <th>Date</th>
@@ -52,12 +53,14 @@
 })
       .then(data => {
         const tableBody = document.getElementById('emailsTable').querySelector('tbody');
+        let a=1;
         tableBody.innerHTML = ''; // Clear any existing data
 
         if (data.length > 0) {
           data.forEach(email => {
             const row = document.createElement('tr');
             row.innerHTML = `
+              <td>${++a}</td>
               <td>${email.From}</td>
               <td>${email.Subject}</td>
               <td>${email.Date}</td>
